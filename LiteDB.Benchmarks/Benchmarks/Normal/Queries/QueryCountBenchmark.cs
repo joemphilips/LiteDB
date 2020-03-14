@@ -1,14 +1,13 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using LiteDB.Benchmarks.Models;
 using LiteDB.Benchmarks.Models.Generators;
 
-namespace LiteDB.Benchmarks.Benchmarks.Queries
+namespace LiteDB.Benchmarks.Benchmarks.Normal.Queries
 {
 	[BenchmarkCategory(Constants.Categories.QUERIES)]
-	public class QueryAllBenchmark : BenchmarkBase
+	public class QueryCountBenchmark : BenchmarkBase
 	{
 		private ILiteCollection<FileMetaBase> _fileMetaCollection;
 
@@ -19,33 +18,36 @@ namespace LiteDB.Benchmarks.Benchmarks.Queries
 
 			DatabaseInstance = new LiteDatabase(ConnectionString());
 			_fileMetaCollection = DatabaseInstance.GetCollection<FileMetaBase>();
+			_fileMetaCollection.EnsureIndex(fileMeta => fileMeta.ShouldBeShown);
 
 			_fileMetaCollection.Insert(FileMetaGenerator<FileMetaBase>.GenerateList(DatasetSize)); // executed once per each N value
+
 			DatabaseInstance.Checkpoint();
 		}
 
 		[Benchmark(Baseline = true)]
-		public List<FileMetaBase> FindAll()
+		public int CountWithLinq()
 		{
-			return _fileMetaCollection.FindAll().ToList();
+			return _fileMetaCollection.Find(Query.EQ(nameof(FileMetaBase.ShouldBeShown), true)).Count();
 		}
 
 		[Benchmark]
-		public List<FileMetaBase> FindAllWithExpression()
+		public int CountWithExpression()
 		{
-			return _fileMetaCollection.Find(_ => true).ToList();
+			return _fileMetaCollection.Count(fileMeta => fileMeta.ShouldBeShown);
 		}
 
 		[Benchmark]
-		public List<FileMetaBase> FindAllWithQuery()
+		public int CountWithQuery()
 		{
-			return _fileMetaCollection.Find(Query.All()).ToList();
+			return _fileMetaCollection.Count(Query.EQ(nameof(FileMetaBase.ShouldBeShown), true));
 		}
 
 		[GlobalCleanup]
 		public void GlobalCleanup()
 		{
 			// Disposing logic
+			DatabaseInstance.DropCollection(nameof(FileMetaBase));
 			DatabaseInstance?.Checkpoint();
 			DatabaseInstance?.Dispose();
 			DatabaseInstance = null;

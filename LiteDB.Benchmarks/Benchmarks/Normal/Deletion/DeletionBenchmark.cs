@@ -5,7 +5,7 @@ using BenchmarkDotNet.Attributes;
 using LiteDB.Benchmarks.Models;
 using LiteDB.Benchmarks.Models.Generators;
 
-namespace LiteDB.Benchmarks.Benchmarks.Deletion
+namespace LiteDB.Benchmarks.Benchmarks.Normal.Deletion
 {
 	[BenchmarkCategory(Constants.Categories.DELETION)]
 	public class DeletionBenchmark : BenchmarkBase

@@ -14,4 +14,9 @@
 	  <ProjectReference Include="..\LiteDB\LiteDB.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Benchmarks\DbRef" />
+	  <Folder Include="Benchmarks\Normal" />
+	</ItemGroup>
+
 </Project>

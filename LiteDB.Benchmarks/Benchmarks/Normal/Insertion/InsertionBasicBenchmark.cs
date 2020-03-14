@@ -4,7 +4,7 @@ using BenchmarkDotNet.Attributes;
 using LiteDB.Benchmarks.Models;
 using LiteDB.Benchmarks.Models.Generators;
 
-namespace LiteDB.Benchmarks.Benchmarks.Insertion
+namespace LiteDB.Benchmarks.Benchmarks.Normal.Insertion
 {
 	[BenchmarkCategory(Constants.Categories.INSERTION)]
 	public class InsertionBasicBenchmark : BenchmarkBase

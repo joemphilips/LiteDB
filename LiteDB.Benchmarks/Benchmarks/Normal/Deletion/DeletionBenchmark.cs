@@ -7,7 +7,7 @@ using LiteDB.Benchmarks.Models.Generators;
 
 namespace LiteDB.Benchmarks.Benchmarks.Normal.Deletion
 {
-	[BenchmarkCategory(Constants.Categories.DELETION)]
+	[BenchmarkCategory(Constants.Categories.NORMAL, Constants.Categories.DELETION)]
 	public class DeletionBenchmark : BenchmarkBase
 	{
 		private List<FileMetaBase> _data;

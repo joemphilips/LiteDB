@@ -10,6 +10,8 @@ namespace LiteDB.Benchmarks.Benchmarks
             internal const string QUERIES = nameof(QUERIES);
             internal const string INSERTION = nameof(INSERTION);
             internal const string DELETION = nameof(DELETION);
+            internal const string NORMAL = nameof(NORMAL);
+            internal const string DB_REF = nameof(DB_REF);
         }
     }
 }

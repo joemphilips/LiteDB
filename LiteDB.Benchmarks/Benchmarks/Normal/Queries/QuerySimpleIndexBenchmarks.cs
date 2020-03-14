@@ -7,7 +7,7 @@ using LiteDB.Benchmarks.Models.Generators;
 
 namespace LiteDB.Benchmarks.Benchmarks.Normal.Queries
 {
-	[BenchmarkCategory(Constants.Categories.QUERIES)]
+	[BenchmarkCategory(Constants.Categories.NORMAL, Constants.Categories.QUERIES)]
 	public class QuerySimpleIndexBenchmarks : BenchmarkBase
 	{
 		private ILiteCollection<FileMetaBase> _fileMetaCollection;

@@ -6,7 +6,7 @@ using LiteDB.Benchmarks.Models.Generators;
 
 namespace LiteDB.Benchmarks.Benchmarks.Normal.Insertion
 {
-	[BenchmarkCategory(Constants.Categories.INSERTION)]
+	[BenchmarkCategory(Constants.Categories.NORMAL, Constants.Categories.INSERTION)]
 	public class InsertionBasicBenchmark : BenchmarkBase
 	{
 		private List<FileMetaBase> _data;

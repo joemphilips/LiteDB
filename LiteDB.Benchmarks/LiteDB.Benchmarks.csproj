@@ -15,7 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Benchmarks\DbRef" />
 	  <Folder Include="Benchmarks\Normal" />
 	</ItemGroup>
 

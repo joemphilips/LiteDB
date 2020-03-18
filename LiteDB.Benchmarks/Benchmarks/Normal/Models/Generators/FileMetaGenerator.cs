@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LiteDB.Benchmarks.Models.Generators
+namespace LiteDB.Benchmarks.Benchmarks.Normal.Models.Generators
 {
     public static class FileMetaGenerator<T> where T : FileMetaBase, new()
     {

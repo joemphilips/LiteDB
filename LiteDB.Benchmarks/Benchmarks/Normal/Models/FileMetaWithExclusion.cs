@@ -1,4 +1,4 @@
-namespace LiteDB.Benchmarks.Models
+namespace LiteDB.Benchmarks.Benchmarks.Normal.Models
 {
     public class FileMetaWithExclusion : FileMetaBase
     {
